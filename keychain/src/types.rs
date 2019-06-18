@@ -183,7 +183,9 @@ impl Identifier {
 	/// Return the identifier of the secret key
 	/// which is the blake2b (10 byte) digest of the PublicKey
 	/// corresponding to the secret key provided.
-	pub fn from_secret_key(secp: &Secp256k1, key: &SecretKey) -> Result<Identifier, Error> {
+    /// 秘密鍵のIDを返す
+    /// 秘密鍵のIDとは秘密鍵を公開鍵に変換したもののblake2bダイジェストである
+    pub fn from_secret_key(secp: &Secp256k1, key: &SecretKey) -> Result<Identifier, Error> {
 		let key_id = PublicKey::from_secret_key(secp, key)?;
 		Ok(Identifier::from_pubkey(secp, &key_id))
 	}
@@ -227,6 +229,8 @@ impl fmt::Display for Identifier {
 	}
 }
 
+/// ブラインディングファクターとは秘密鍵そのものである
+///
 #[derive(Clone, Copy, PartialEq, Serialize, Deserialize)]
 pub struct BlindingFactor([u8; SECRET_KEY_SIZE]);
 
@@ -269,6 +273,7 @@ impl Add for BlindingFactor {
 }
 
 impl BlindingFactor {
+    // 秘密鍵からブラインディングファクターを生成する
 	pub fn from_secret_key(skey: secp::key::SecretKey) -> BlindingFactor {
 		BlindingFactor::from_slice(&skey.as_ref())
 	}
@@ -448,6 +453,8 @@ pub struct ValueExtKeychainPath {
 	pub ext_keychain_path: ExtKeychainPath,
 }
 
+// キーチェーンとは何か?
+//
 pub trait Keychain: Sync + Send + Clone {
 	/// Generates a keychain from a raw binary seed (which has already been
 	/// decrypted if applicable).

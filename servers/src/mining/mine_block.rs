@@ -87,6 +87,7 @@ pub fn get_block(
 
 /// Builds a new block with the chain head as previous and eligible
 /// transactions from the pool.
+// 新しいブロックの生成
 fn build_block(
 	chain: &Arc<chain::Chain>,
 	tx_pool: &Arc<RwLock<pool::TransactionPool>>,

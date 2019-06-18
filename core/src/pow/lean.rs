@@ -24,19 +24,24 @@ use crate::pow::Proof;
 /// As a consequence, it's a little less than 10 times slower than John
 /// Tromp's implementation, as it's not optimized for performance and reuses
 /// croaring which is likely sub-optimal for this task.
+
+// Lean とは何か?
+
 pub struct Lean {
 	params: CuckooParams<u32>,
-	edges: Bitmap,
+	edges: Bitmap, // エッジ(片側)のデータありなしをBitmapで表現したもの(多分)
 }
 
 impl Lean {
 	/// Instantiates a new lean miner based on some Cuckatoo parameters
 	pub fn new(edge_bits: u8) -> Lean {
 		// note that proof size doesn't matter to a lean miner
+        // 42: proof_size
 		let params = CuckooParams::new(edge_bits, 42).unwrap();
 
 		// edge bitmap, before trimming all of them are on
 		let mut edges = Bitmap::create_with_capacity(params.num_edges as u32);
+        // 全ての要素をありにする
 		edges.flip_inplace(0..params.num_edges);
 
 		Lean { params, edges }
@@ -62,24 +67,30 @@ impl Lean {
 		ctx.find_cycles_iter(self.edges.iter().map(|e| e as u64))
 	}
 
+    // このアルゴリズムの意味自体がよくわからない???
 	fn count_and_kill(&mut self) {
 		// on each side u or v of the bipartite graph
 		for uorv in 0..2 {
 			let mut nodes = Bitmap::create();
 			// increment count for each node
 			for e in self.edges.iter() {
-				let node = self.params.sipnode(e, uorv, false).unwrap();
+                // ビットマップ内の存在する要素の index についてのループになる
+                // 左側のエッジについてはインデックスの2倍,
+                // 右側のエッジについてはインデックスの2倍+1 の値の siphash24 を計算して
+                // u64型にするが,エッジのマスクを掛けて T 型に戻したものが node になる
+				let node = self.params.sipnode_shift(e, uorv, false).unwrap();
 				nodes.add(node);
 			}
 
 			// then kill edges with lone nodes (no neighbour at ^1)
 			let mut to_kill = Bitmap::create();
 			for e in self.edges.iter() {
-				let node = self.params.sipnode(e, uorv, false).unwrap();
+				let node = self.params.sipnode_shift(e, uorv, false).unwrap();
 				if !nodes.contains(node ^ 1) {
 					to_kill.add(e);
 				}
 			}
+            // edges に存在するもので to_kill に存在するものを削除する
 			self.edges.andnot_inplace(&to_kill);
 		}
 	}

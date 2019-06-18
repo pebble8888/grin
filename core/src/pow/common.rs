@@ -124,12 +124,14 @@ macro_rules! to_usize {
 	};
 }
 
+/*
 #[macro_export]
 macro_rules! to_edge {
 	($n:expr) => {
 		T::from($n).ok_or(ErrorKind::IntegerCast)?
 	};
 }
+*/
 
 /// Utility struct to calculate commonly used Cuckoo parameters calculated
 /// from header, nonce, edge_bits, etc.
@@ -150,8 +152,8 @@ where
 {
 	/// Instantiates new params and calculate edge mask, etc
 	pub fn new(edge_bits: u8, proof_size: usize) -> Result<CuckooParams<T>, Error> {
-		let num_edges = (1 as u64) << edge_bits;
-		let edge_mask = to_edge!(num_edges - 1);
+		let num_edges: u64 = (1 as u64) << edge_bits;
+		let edge_mask = T::from(num_edges - 1).ok_or(ErrorKind::IntegerCast)?;
 		Ok(CuckooParams {
 			edge_bits,
 			proof_size,
@@ -168,16 +170,23 @@ where
 	}
 
 	/// Return siphash masked for type
-	pub fn sipnode(&self, edge: T, uorv: u64, shift: bool) -> Result<T, Error> {
+    ///
+    /// @param edge: ハッシュ化などでu64に変換できる型
+    /// @param uorv: 0 or 1
+    /// @param shift: false しか使われていない
+	pub fn sipnode_shift(&self, edge: T, uorv: u64, shift: bool) -> Result<T, Error> {
+        // 戻り値はu64
 		let hash_u64 = siphash24(
-			&self.siphash_keys,
-			2 * edge.to_u64().ok_or(ErrorKind::IntegerCast)? + uorv,
+			&self.siphash_keys, // seed: u64の4つの配列 
+			2 * edge.to_u64().ok_or(ErrorKind::IntegerCast)? + uorv, // nonce: u64
 		);
 		let mut masked = hash_u64 & self.edge_mask.to_u64().ok_or(ErrorKind::IntegerCast)?;
 		if shift {
 			masked <<= 1;
 			masked |= uorv;
 		}
+        // u64からT型に戻している
 		Ok(T::from(masked).ok_or(ErrorKind::IntegerCast)?)
 	}
 }
+

@@ -1,0 +1,1746 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_api'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_api"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'rest'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=rest",
+                    "--package=grin_api"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'rest'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=rest",
+                    "--package=grin_api"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_chain'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'data_file_integrity'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=data_file_integrity",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'data_file_integrity'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=data_file_integrity",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'test_txhashset'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=test_txhashset",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'test_txhashset'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=test_txhashset",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'test_coinbase_maturity'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=test_coinbase_maturity",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'test_coinbase_maturity'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=test_coinbase_maturity",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'mine_simple_chain'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=mine_simple_chain",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'mine_simple_chain'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mine_simple_chain",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'store_indices'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=store_indices",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'store_indices'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=store_indices",
+                    "--package=grin_chain"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_core'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'core'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=core",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'core'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=core",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'transaction'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=transaction",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'transaction'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=transaction",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'verifier_cache'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=verifier_cache",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'verifier_cache'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=verifier_cache",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'merkle_proof'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=merkle_proof",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'merkle_proof'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=merkle_proof",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'block'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=block",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'block'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=block",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'pmmr'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=pmmr",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'pmmr'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=pmmr",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'vec_backend'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=vec_backend",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'vec_backend'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=vec_backend",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'consensus'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=consensus",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'consensus'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=consensus",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'common'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=common",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'common'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=common",
+                    "--package=grin_core"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_keychain'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_keychain"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_util'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_util"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'zip'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=zip",
+                    "--package=grin_util"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'zip'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=zip",
+                    "--package=grin_util"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'file'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=file",
+                    "--package=grin_util"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'file'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=file",
+                    "--package=grin_util"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_store'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'utxo_set_perf'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=utxo_set_perf",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'utxo_set_perf'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=utxo_set_perf",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'test_bitmap'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=test_bitmap",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'test_bitmap'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=test_bitmap",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'pmmr'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=pmmr",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'pmmr'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=pmmr",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'prune_list'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=prune_list",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'prune_list'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=prune_list",
+                    "--package=grin_store"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_p2p'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_p2p"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'peer_handshake'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=peer_handshake",
+                    "--package=grin_p2p"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'peer_handshake'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=peer_handshake",
+                    "--package=grin_p2p"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'ser_deser'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=ser_deser",
+                    "--package=grin_p2p"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'ser_deser'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=ser_deser",
+                    "--package=grin_p2p"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_pool'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'coinbase_maturity'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=coinbase_maturity",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'coinbase_maturity'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=coinbase_maturity",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'block_building'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=block_building",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'block_building'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=block_building",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'transaction_pool'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=transaction_pool",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'transaction_pool'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=transaction_pool",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'block_reconciliation'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=block_reconciliation",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'block_reconciliation'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=block_reconciliation",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'block_max_weight'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=block_max_weight",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'block_max_weight'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=block_max_weight",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'common'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=common",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'common'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=common",
+                    "--package=grin_pool"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_config'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_config"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_servers'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'framework'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=framework",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'framework'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=framework",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'dandelion'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=dandelion",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'dandelion'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=dandelion",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'stratum'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=stratum",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'stratum'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=stratum",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'simulnet'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=simulnet",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'simulnet'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=simulnet",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'wallet'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=wallet",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'wallet'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=wallet",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'api'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=api",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'api'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=api",
+                    "--package=grin_servers"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'grin_wallet'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'transaction'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=transaction",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'transaction'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=transaction",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'check'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=check",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'check'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=check",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'accounts'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=accounts",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'accounts'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=accounts",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'restore'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=restore",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'restore'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=restore",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'repost'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=repost",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'repost'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=repost",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'self_send'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=self_send",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'self_send'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=self_send",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'libwallet'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=libwallet",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'libwallet'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=libwallet",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug test 'file'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--test=file",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in test 'file'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=file",
+                    "--package=grin_wallet"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'grin'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=grin",
+                    "--package=grin"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'grin'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=grin",
+                    "--package=grin"
+                ],
+                "filter": {
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

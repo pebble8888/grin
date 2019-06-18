@@ -455,7 +455,6 @@ pub fn sign_with_blinding(
 	pubkey_sum: Option<&PublicKey>,
 ) -> Result<Signature, Error> {
 	let skey = &blinding.secret_key(&secp)?;
-	//let pubkey_sum = PublicKey::from_secret_key(&secp, &skey)?;
 	let sig = aggsig::sign_single(secp, &msg, skey, None, None, None, pubkey_sum, None)?;
 	Ok(sig)
 }

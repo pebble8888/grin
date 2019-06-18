@@ -30,8 +30,8 @@ macro_rules! rotl {
 
 /// Utility function to compute a single siphash 2-4 based on a seed and
 /// a nonce
-pub fn siphash24(v: &[u64; 4], nonce: u64) -> u64 {
-	let mut siphash = SipHash24::new(v);
+pub fn siphash24(seed: &[u64; 4], nonce: u64) -> u64 {
+	let mut siphash = SipHash24::new(seed);
 	siphash.hash(nonce);
 	siphash.digest()
 }
