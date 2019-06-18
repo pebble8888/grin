@@ -22,7 +22,7 @@ use crate::util::secp::pedersen::{Commitment, ProofInfo, ProofMessage, RangeProo
 use crate::util::secp::{self, Secp256k1};
 
 // ナンスの作成
-// k: 
+// k:
 // commit: コミットメント
 fn create_nonce<K>(k: &K, commit: &Commitment) -> Result<SecretKey, Error>
 where
@@ -30,17 +30,17 @@ where
 {
 	// hash(commit|wallet root secret key (m)) as nonce
 	let root_key = k.derive_key(0, &K::root_key_id())?;
-    // blake2をハッシュ関数として用いる
-    // arg1:出力ダイジェストサイズ
-    // arg2:キー(64バイト以下)
-    // arg3:メッセージ
+	// blake2をハッシュ関数として用いる
+	// arg1:出力ダイジェストサイズ
+	// arg2:キー(64バイト以下)
+	// arg3:メッセージ
 	let res = blake2::blake2b::blake2b(32, &commit.0, &root_key.0[..]);
 	let res = res.as_bytes();
 	let mut ret_val = [0; 32];
 	for i in 0..res.len() {
 		ret_val[i] = res[i];
 	}
-    // TODO:from_sliceで0や群位数以上になった場合はエラーになるのか?
+	// TODO:from_sliceで0や群位数以上になった場合はエラーになるのか?
 	match SecretKey::from_slice(k.secp(), &ret_val) {
 		Ok(sk) => Ok(sk),
 		Err(e) => Err(ErrorKind::RangeProof(

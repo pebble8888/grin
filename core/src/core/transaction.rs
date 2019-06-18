@@ -754,7 +754,7 @@ impl TransactionBody {
 /// A transaction
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Transaction {
-    /// サイドチェーンアタックを防ぐためのoffset ???
+	/// サイドチェーンアタックを防ぐためのoffset ???
 	/// The kernel "offset" k2
 	/// excess is k1G after splitting the key k = k1 + k2
 	pub offset: BlindingFactor,

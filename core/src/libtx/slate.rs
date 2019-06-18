@@ -38,23 +38,23 @@ const CURRENT_SLATE_VERSION: u64 = 1;
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct ParticipantData {
 	/// Id of participant in the transaction. (For now, 0=sender, 1=rec)
-    /// 0: 送信トランザクション
-    /// 1: 保存トランザクション?
+	/// 0: 送信トランザクション
+	/// 1: 保存トランザクション?
 	pub id: u64,
 	/// Public key corresponding to private blinding factor
-    /// 秘密ブラインディングファクターに対応する公開鍵
+	/// 秘密ブラインディングファクターに対応する公開鍵
 	pub public_blind_excess: PublicKey,
 	/// Public key corresponding to private nonce
-    /// 秘密ナンスに対応する公開鍵
+	/// 秘密ナンスに対応する公開鍵
 	pub public_nonce: PublicKey,
 	/// Public partial signature
-    /// 公開部分署名
+	/// 公開部分署名
 	pub part_sig: Option<Signature>,
 	/// A message for other participants
-    /// 他の参加者用のメッセージ
+	/// 他の参加者用のメッセージ
 	pub message: Option<String>,
 	/// Signature, created with private key corresponding to 'public_blind_excess'
-    /// 秘密ブラインディングファクターでの署名
+	/// 秘密ブラインディングファクターでの署名
 	pub message_sig: Option<Signature>,
 }
 
@@ -71,14 +71,14 @@ impl ParticipantData {
 	/// performed round 1, and adds:
 	/// -Part sig is filled out
 
-    /// ラウンド1:
-    ///   - インプットがトランザクションに追加されていること
-    ///   - アウトプットがトランザクションに追加されていること
-    ///   - 公開署名NONCEが選択され追加されていること
-    ///   - ブラインディングファクターへのexcess 公開鍵が追加されていること
-    /// ラウンド2:
-    ///   - 全ての参加者がラウンド1を実行し,
-    ///     公開部分署名が埋められていること
+	/// ラウンド1:
+	///   - インプットがトランザクションに追加されていること
+	///   - アウトプットがトランザクションに追加されていること
+	///   - 公開署名NONCEが選択され追加されていること
+	///   - ブラインディングファクターへのexcess 公開鍵が追加されていること
+	/// ラウンド2:
+	///   - 全ての参加者がラウンド1を実行し,
+	///     公開部分署名が埋められていること
 	pub fn is_complete(&self) -> bool {
 		self.part_sig.is_some()
 	}
@@ -119,19 +119,19 @@ impl ParticipantMessageData {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Slate {
 	/// The number of participants intended to take part in this transaction
-    /// このトランザクションの参加者の数
+	/// このトランザクションの参加者の数
 	pub num_participants: usize,
 	/// Unique transaction ID, selected by sender
-    /// 送信者によって選択されたユニークなトランザクションID
+	/// 送信者によって選択されたユニークなトランザクションID
 	pub id: Uuid,
 	/// The core transaction data:
 	/// inputs, outputs, kernels, kernel offset
 	pub tx: Transaction,
 	/// base amount (excluding fee)
-    /// ???
+	/// ???
 	pub amount: u64,
 	/// fee amount
-    /// 手数料
+	/// 手数料
 	pub fee: u64,
 	/// Block height for the transaction
 	pub height: u64,
@@ -194,12 +194,12 @@ impl Slate {
 
 	/// Completes callers part of round 1, adding public key info
 	/// to the slate
-    /// ラウンド1
+	/// ラウンド1
 	pub fn fill_round_1<K>(
 		&mut self,
 		keychain: &K,
 		sec_key: &mut SecretKey, // secp256k1 の意味での秘密鍵
-		sec_nonce: &SecretKey, // secp256k1 の意味での秘密鍵
+		sec_nonce: &SecretKey,   // secp256k1 の意味での秘密鍵
 		participant_id: usize,
 		message: Option<String>,
 	) -> Result<(), Error>
@@ -207,8 +207,8 @@ impl Slate {
 		K: Keychain,
 	{
 		// Whoever does this first generates the offset
-        // トランザクションオフセットが0なら秘密鍵からオフセットを生成する
-        // -> ???
+		// トランザクションオフセットが0なら秘密鍵からオフセットを生成する
+		// -> ???
 		if self.tx.offset == BlindingFactor::zero() {
 			self.generate_offset(keychain, sec_key)?;
 		}
@@ -232,7 +232,7 @@ impl Slate {
 		Ok(msg)
 	}
 
-    /// ラウンド2
+	/// ラウンド2
 	/// Completes caller's part of round 2, completing signatures
 	pub fn fill_round_2<K>(
 		&mut self,
@@ -262,7 +262,7 @@ impl Slate {
 	/// Creates the final signature, callable by either the sender or recipient
 	/// (after phase 3: sender confirmation)
 	/// TODO: Only callable by receiver at the moment
-    /// 最後の署名を作成する, その署名は送信者または受信者のどちらかによって呼び出し可能
+	/// 最後の署名を作成する, その署名は送信者または受信者のどちらかによって呼び出し可能
 	pub fn finalize<K>(&mut self, keychain: &K) -> Result<(), Error>
 	where
 		K: Keychain,
@@ -272,7 +272,7 @@ impl Slate {
 	}
 
 	/// Return the sum of public nonces
-    /// pub_nonce[0] + ... + pub_nonce[n]
+	/// pub_nonce[0] + ... + pub_nonce[n]
 	fn pub_nonce_sum(&self, secp: &secp::Secp256k1) -> Result<PublicKey, Error> {
 		let pub_nonces = self
 			.participant_data
@@ -286,7 +286,7 @@ impl Slate {
 	}
 
 	/// Return the sum of public blinding factors
-    /// pub_bf[0] + ... + pub_bf[n]
+	/// pub_bf[0] + ... + pub_bf[n]
 	fn pub_blind_sum(&self, secp: &secp::Secp256k1) -> Result<PublicKey, Error> {
 		let pub_blinds = self
 			.participant_data
@@ -311,12 +311,12 @@ impl Slate {
 	/// and saves participant's transaction context
 	/// sec_key can be overridden to replace the blinding
 	/// factor (by whoever split the offset)
-    ///
-    /// 参加者の公開鍵をスレートデータに追加する
+	///
+	/// 参加者の公開鍵をスレートデータに追加する
 	fn add_participant_info<K>(
 		&mut self,
 		keychain: &K,
-		sec_key: &SecretKey, // 秘密鍵?
+		sec_key: &SecretKey,   // 秘密鍵?
 		sec_nonce: &SecretKey, // nonce
 		id: usize,
 		part_sig: Option<Signature>,
@@ -326,12 +326,12 @@ impl Slate {
 		K: Keychain,
 	{
 		// Add our public key and nonce to the slate
-        // 秘密鍵から公開鍵を計算する
+		// 秘密鍵から公開鍵を計算する
 		let pub_key = PublicKey::from_secret_key(keychain.secp(), &sec_key)?;
-        // nonce から公開鍵を計算する
+		// nonce から公開鍵を計算する
 		let pub_nonce = PublicKey::from_secret_key(keychain.secp(), &sec_nonce)?;
 		// Sign the provided message
-        // メッセージに署名する
+		// メッセージに署名する
 		let message_sig = {
 			if let Some(m) = message.clone() {
 				let hashed = blake2b(secp::constants::MESSAGE_SIZE, &[], &m.as_bytes()[..]);
@@ -367,8 +367,8 @@ impl Slate {
 	/// For now, we'll have the transaction initiator be responsible for it
 	/// Return offset private key for the participant to use later in the
 	/// transaction
-    ///
-    /// @param sec_key 秘密鍵
+	///
+	/// @param sec_key 秘密鍵
 	fn generate_offset<K>(&mut self, keychain: &K, sec_key: &mut SecretKey) -> Result<(), Error>
 	where
 		K: Keychain,
@@ -376,14 +376,14 @@ impl Slate {
 		// Generate a random kernel offset here
 		// and subtract it from the blind_sum so we create
 		// the aggsig context with the "split" key
-        // ランダムな値を offset に入れる, split するのはサイドアタックを防ぐのが目的である
-        // offsetはスカラー値
+		// ランダムな値を offset に入れる, split するのはサイドアタックを防ぐのが目的である
+		// offsetはスカラー値
 		self.tx.offset =
 			BlindingFactor::from_secret_key(SecretKey::new(&keychain.secp(), &mut thread_rng()));
-        // 秘密鍵
-        // をブラインディングファクタに変換して加算してから,
-        // オフセットブラインディングファクターを減算する
-        let blind_offset = keychain.blind_sum(
+		// 秘密鍵
+		// をブラインディングファクタに変換して加算してから,
+		// オフセットブラインディングファクターを減算する
+		let blind_offset = keychain.blind_sum(
 			&BlindSum::new()
 				.add_blinding_factor(BlindingFactor::from_secret_key(sec_key.clone()))
 				.sub_blinding_factor(self.tx.offset),

@@ -25,8 +25,8 @@ use crate::util;
 struct Graph<T>
 where
 	T: EdgeType,
-    // EdgeType is  PrimInt + ToPrimitive + Mul + BitOrAssign + Hash
-    // EdgeType は u64 への変換が可能
+	// EdgeType is  PrimInt + ToPrimitive + Mul + BitOrAssign + Hash
+	// EdgeType は u64 への変換が可能
 {
 	/// Maximum number of edges
 	max_edges: T,
@@ -40,7 +40,7 @@ where
 	visited: Bitmap,
 	/// Maximum solutions : ???
 	max_sols: u32,
-	/// 
+	///
 	pub solutions: Vec<Proof>,
 	/// proof size
 	proof_size: usize,
@@ -101,7 +101,9 @@ where
 		}
 		let ulink = self.links.len();
 		let vlink = self.links.len() + 1;
-		if /* to_edge!(vlink) */ T::from(vlink).ok_or(ErrorKind::IntegerCast)? == self.nil {
+		if
+		/* to_edge!(vlink) */
+		T::from(vlink).ok_or(ErrorKind::IntegerCast)? == self.nil {
 			return Err(ErrorKind::EdgeAddition)?;
 		}
 		self.links.push(Link {
@@ -248,49 +250,49 @@ where
 	}
 
 	/// Return siphash masked for type
-    /// @param edge 
-    /// @param uorv  0 or 1
-    /// エッジを返す
+	/// @param edge
+	/// @param uorv  0 or 1
+	/// エッジを返す
 	pub fn sipnode(&self, edge: T, uorv: u64) -> Result<T, Error> {
 		self.params.sipnode_shift(edge, uorv, false)
 	}
 
 	/// Simple implementation of algorithm
 
-    // サイクルを探す
-    // iter: 要素がu64型であるイテレーター
+	// サイクルを探す
+	// iter: 要素がu64型であるイテレーター
 	pub fn find_cycles_iter<I>(&mut self, iter: I) -> Result<Vec<Proof>, Error>
 	where
 		I: Iterator<Item = u64>,
 	{
 		// ここではまだ solutions の数は1
-        // val はグラフ矢印線のインデックスを表している
+		// val はグラフ矢印線のインデックスを表している
 		let mut val = vec![];
 		for n in iter {
 			val.push(n);
-            // イテレーターの要素をエッジに変換する
-            let edge_u = T::from(n).ok_or(ErrorKind::IntegerCast)?;
-            let edge_v = T::from(n).ok_or(ErrorKind::IntegerCast)?;
-            
+			// イテレーターの要素をエッジに変換する
+			let edge_u = T::from(n).ok_or(ErrorKind::IntegerCast)?;
+			let edge_v = T::from(n).ok_or(ErrorKind::IntegerCast)?;
+
 			let u = self.sipnode(edge_u, 0)?;
 			let v = self.sipnode(edge_v, 1)?;
-            let edge0 = T::from(u).ok_or(ErrorKind::IntegerCast)?;
-            let edge1 = T::from(v).ok_or(ErrorKind::IntegerCast)?;
+			let edge0 = T::from(u).ok_or(ErrorKind::IntegerCast)?;
+			let edge1 = T::from(v).ok_or(ErrorKind::IntegerCast)?;
 			self.graph.add_edge(edge0, edge1)?;
 		}
-        // 最後のエレメントを一つ取り出す
+		// 最後のエレメントを一つ取り出す
 		self.graph.solutions.pop();
-        // solutions 内のnonces をグラフのインデックス順でソートする???
+		// solutions 内のnonces をグラフのインデックス順でソートする???
 		for s in &mut self.graph.solutions {
 			s.nonces = map_vec!(s.nonces, |n| val[*n as usize]);
 			s.nonces.sort();
 		}
-        // solutions の全てのProofOfWork を確認する
+		// solutions の全てのProofOfWork を確認する
 		for s in &self.graph.solutions {
 			self.verify_impl(&s)?;
 		}
 		if self.graph.solutions.is_empty() {
-            // no solution
+			// no solution
 			Err(ErrorKind::NoSolution)?
 		} else {
 			Ok(self.graph.solutions.clone())
@@ -299,9 +301,9 @@ where
 
 	/// Verify that given edges are ascending and form a cycle in a header-generated
 	/// graph
-    ///
-    /// proof of work を確認できない場合 Error を返し,
-    /// 確認できた場合 Ok() を返す
+	///
+	/// proof of work を確認できない場合 Error を返し,
+	/// 確認できた場合 Ok() を返す
 	pub fn verify_impl(&self, proof: &Proof) -> Result<(), Error> {
 		let nonces = &proof.nonces;
 		let mut uvs = vec![0u64; 2 * proof.proof_size()];
@@ -315,8 +317,8 @@ where
 			if n > 0 && nonces[n] <= nonces[n - 1] {
 				return Err(ErrorKind::Verification("edges not ascending".to_owned()))?;
 			}
-            let edge0 = T::from(nonces[n]).ok_or(ErrorKind::IntegerCast)?;
-            let edge1 = T::from(nonces[n]).ok_or(ErrorKind::IntegerCast)?;
+			let edge0 = T::from(nonces[n]).ok_or(ErrorKind::IntegerCast)?;
+			let edge1 = T::from(nonces[n]).ok_or(ErrorKind::IntegerCast)?;
 			uvs[2 * n] = to_u64!(self.sipnode(edge0, 0)?);
 			uvs[2 * n + 1] = to_u64!(self.sipnode(edge1, 1)?);
 			xor0 ^= uvs[2 * n];

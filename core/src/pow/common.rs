@@ -170,14 +170,14 @@ where
 	}
 
 	/// Return siphash masked for type
-    ///
-    /// @param edge: ハッシュ化などでu64に変換できる型
-    /// @param uorv: 0 or 1
-    /// @param shift: false しか使われていない
+	///
+	/// @param edge: ハッシュ化などでu64に変換できる型
+	/// @param uorv: 0 or 1
+	/// @param shift: false しか使われていない
 	pub fn sipnode_shift(&self, edge: T, uorv: u64, shift: bool) -> Result<T, Error> {
-        // 戻り値はu64
+		// 戻り値はu64
 		let hash_u64 = siphash24(
-			&self.siphash_keys, // seed: u64の4つの配列 
+			&self.siphash_keys,                                      // seed: u64の4つの配列
 			2 * edge.to_u64().ok_or(ErrorKind::IntegerCast)? + uorv, // nonce: u64
 		);
 		let mut masked = hash_u64 & self.edge_mask.to_u64().ok_or(ErrorKind::IntegerCast)?;
@@ -185,8 +185,7 @@ where
 			masked <<= 1;
 			masked |= uorv;
 		}
-        // u64からT型に戻している
+		// u64からT型に戻している
 		Ok(T::from(masked).ok_or(ErrorKind::IntegerCast)?)
 	}
 }
-
